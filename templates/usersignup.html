@@ -1,0 +1,43 @@
+{% extends 'baselogin.html' %}
+{% block title %} User Sign-Up {% endblock title %}
+{% block form %}
+<h2 style="color: whitesmoke;">Sign-Up</h2>
+
+{% include "message.html" %}
+
+<!-- required
+email/phone
+name
+password
+-->
+<div class="row">
+    <div class="col-md-4">
+        <!--<h3>blank</h3>-->
+    </div>
+    <div class="col-md-4">
+        <form action="/signup" method="post">
+        <div class="form-group">
+            <input type="email" name="email" class="form-control mt-2" placeholder="Enter your email-id" required="required">
+        </div>
+            <div class="form-group">
+                <input type="text" name="username" class="form-control mt-2" placeholder="Enter username" required="required">
+            </div>
+            <div class="form-group">
+                 <input type="password" name="password" class="form-control mt-2" placeholder="Enter password" required="required">
+            </div>
+            <br>
+            <br>
+            <button type="submit" class="btn btn-info">Sign-In</button>
+    </form>
+        <br>
+        <h2 style="font-size: 23px; color: whitesmoke;">OR</h2>
+    <a class="old-user btn btn-info" href="/userlogin">Click Here to Login</a>
+    </div>
+    <div class="col-md-4">
+        <!--<h3>blank</h3>-->
+    </div>
+    <div class="col-md-4">
+        <!--<h3>blank</h3>-->
+    </div>
+</div>
+{% endblock %}

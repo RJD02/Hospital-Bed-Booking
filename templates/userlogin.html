@@ -1,0 +1,39 @@
+{% extends 'baselogin.html' %}
+{% block title %} User Log-In {% endblock title %}
+{% block form %}
+<h2 style="color: whitesmoke;">Log-In</h2>
+<!-- required
+email/phone
+name
+password
+-->
+<div class="row">
+    <div class="col-md-4">
+        <!--<h3>blank</h3>-->
+    </div>
+    <div class="col-md-4">
+        <form action="/login" method="post">
+            {% include "message.html" %}
+            <div class="form-group">
+                <input type="text" name="username" class="form-control mt-2" placeholder="Enter username" required="required">
+            </div>
+            <!-- instead of password we are setting the DOB as password -->
+            <div class="form-group">
+                <input type="password" name="password" class="form-control mt-2" placeholder="Enter password" required="required">
+            </div>
+            <br>
+            <br>
+            <button type="submit" class="btn btn-info">Log-In</button>
+    </form>
+        <br>
+        <h2 style="font-size: 23px; color: whitesmoke;">OR</h2>
+        <a class="old-user btn btn-info" href="/usersignup">New User? Sign-Up</a>
+    </div>
+    <div class="col-md-4">
+        <!--<h3>blank</h3>-->
+    </div>
+    <div class="col-md-4">
+        <!--<h3>blank</h3>-->
+    </div>
+</div>
+{% endblock %}

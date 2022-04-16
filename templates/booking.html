@@ -1,0 +1,122 @@
+{% extends "navbar.html" %}
+{% block title %}
+Book Your Bed
+{% endblock title %}
+{% block body %}
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="container mt-4">
+<div class="display-4 text-center text-info">Book Your Bed Here</div>
+<br>
+<div class="row">
+
+    <div class="col-md-4">
+
+        <div class="card">
+            {% include "message.html" %}
+            <h4 class="text-center text-info">Select Your Data From Below</h4>
+            <br>
+            <div class="card-body bg-light">
+
+                <form action="/bedbooking" method="post">
+
+                    <div class="form-group">
+                        <input type="text" class="form-control mt-2" name="username"
+                        value="{{current_user.username}}"
+                        placeholder="Enter username" readonly required >
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control mt-2" name="HosCode"
+                               placeholder="Enter Hospital Code" required>
+                    </div>
+<!-- check the value if there is any error in the web app we have to change the value of beds -->
+                   <div class="form-group">
+                      <select id="bedtype" name="bedtype" class="form-control" required>
+                        <option selected>Choose Bed Type</option>
+                        <option value="NormalBed">Normal Bed</option>
+                        <option value="IcuBed">I.C.U Bed</option>
+                        <option value="VentBed">Ventilator Bed</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <select id="medicalhistory" name="medicalhistory" class="form-control" required>
+                        <option selected>Any Medical History?</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control mt-2" name="pname" placeholder="Enter Patient Name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control mt-2" name="pphone" placeholder="Enter Patient Phone number" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control mt-2" name="paddress" placeholder="Enter Address of Patient" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="number" class="form-control mt-2" name="page" placeholder="Enter Age of Patient" required>
+                    </div>
+
+                    <br>
+                    <!--<button class="btn btn-info" type="submit">Submit</button>-->
+                    <button class="btn btn-info" type="submit">Book</button>
+
+
+
+
+                </form>
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+<div class="col-md-8">
+<table class="table table-light">
+  <thead>
+  <h3 class="text-center text-info bg-light">Hospital Data</h3>
+    <tr>
+
+      <th scope="col">Hospital Code</th>
+      <th scope="col">Hospital Name</th>
+      <th scope="col">Normal Bed</th>
+      <th scope="col">I.C.U Bed</th>
+      <th scope="col">Ventilator Bed</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for post in query %}
+   <tr>
+      <td>{{post.HosCode}}</td>
+      <td>{{post.HosName}}</td>
+      <td>{{post.normalbed}}</td>
+      <td>{{post.icubed}}</td>
+      <td>{{post.ventbed}}</td>
+    </tr>
+
+  {% endfor %}
+
+  </tbody>
+</table>
+</div>
+
+
+</div>
+
+
+</div>
+
+{% endblock body %}
